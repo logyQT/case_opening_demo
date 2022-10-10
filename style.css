@@ -1,5 +1,5 @@
 :root {
-    --roll_offset: 75px;
+    --roll_offset: 0;
     --roll_time: 5000ms;
 }
 html,
@@ -36,7 +36,6 @@ body {
     z-index: 1;
 }
 .roll-container {
-    width: calc(calc(calc(150px + 1rem) * 5) - 1rem);
     height: fit-content;
     display: flex;
     flex-direction: row;
@@ -72,6 +71,20 @@ body {
 .roll-button:active {
     scale: 0.985;
 }
+.inventory {
+    height: calc(calc(calc(150px + 1rem) * 2) + 2rem);
+    width: calc(calc(calc(150px + 1rem) * 5) - 1rem);
+    background: #333;
+    display: grid;
+    justify-content: start;
+    grid-template: ". . . . .";
+    padding: 1rem;
+    padding-right: 2rem;
+    gap: 1rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 @keyframes roll {
     0% {
         transform: translate(0, 0);
