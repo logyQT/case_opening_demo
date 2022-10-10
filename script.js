@@ -1,7 +1,7 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-const e = $(".animation-container");
+const roll_container = $(".roll-container");
 
 const words = [
     "colossal",
@@ -106,27 +106,51 @@ const words = [
     "efficacious",
 ];
 
-for (let i = 0; i < 40; i++) {
-    let div = document.createElement("div");
+function add_items(preview = false) {
+    let item_count = 40;
+    if (preview) item_count = 5;
+    for (let i = 0; i < item_count; i++) {
+        let div = document.createElement("div");
 
-    div.classList.add("card");
-    let img = document.createElement("img");
+        div.classList.add("item");
+        let img = document.createElement("img");
 
-    img.src = "https://picsum.photos/150?" + i;
-    let text = document.createElement("p");
-    text.innerText = words[Math.floor(Math.random() * 100)];
-    div.appendChild(img);
-    div.appendChild(text);
-    e.appendChild(div);
+        img.src = "https://picsum.photos/150?" + Math.floor(Math.random() * 100);
+        let text = document.createElement("p");
+        text.innerText = words[Math.floor(Math.random() * 100)];
+        div.appendChild(img);
+        div.appendChild(text);
+        roll_container.appendChild(div);
+    }
+}
+
+function generate_roll_offset() {
+    let offset = Math.floor(Math.random() * (75 - -75) - 75);
+    document.documentElement.style.setProperty("--roll_offset", offset + "px");
+    console.log(offset);
+}
+
+function clear() {
+    let items = $$(".item");
+    items.forEach((e) => {
+        e.remove();
+    });
 }
 
 function roll() {
-    e.setAttribute("state", "rolling");
-    e.addEventListener(
+    if (roll_container.getAttribute("state") == "rolling") return;
+    clear();
+    add_items();
+    generate_roll_offset();
+
+    roll_container.setAttribute("state", "rolling");
+    roll_container.addEventListener(
         "animationend",
         () => {
-            e.setAttribute("state", "rolled");
+            roll_container.setAttribute("state", "rolled");
         },
         { once: true }
     );
 }
+
+add_items(true);
