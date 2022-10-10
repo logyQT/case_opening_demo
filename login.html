@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>SpaceClicker</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="left">
+        <div class="logo">
+          <h1>SpaceClicker</h1>
+          <p>Wyrusz w podróż swojego życia...</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="login-page">
+          <form class="login-form" action="login.php" method="POST">
+            <input name="login" type="text" required placeholder="login" maxlength="16" autocomplete="off" /><br />
+            <input name="password" type="password" required placeholder="hasło" maxlength="16" autocomplete="off" /><br />
+            <input type="submit" value="Zaloguj się" />
+          </form>
+          <a href="odzyskiwanie.html">Nie pamiętasz hasła?</a>
+          <hr />
+          <button onclick="document.querySelector('.signup-page').showModal()" class="signup-button" onclick>Utwórz nowe konto</button>
+        </div>
+      </div>
+    </div>
+    <dialog class="signup-page">
+      <form class="signup-form" action="register.php" method="POST">
+        <h2>Zarejestruj się</h2>
+        <input onclick="closeModal()" class="close-button" type="reset" value="✕" />
+        <hr />
+        <input name="username" type="text" maxlength="32" required autocomplete="off" placeholder="username" /><br />
+        <input name="login" type="text" placeholder="login" required maxlength="16" autocomplete="off" /><br />
+        <input
+          name="password"
+          type="password"
+          placeholder="hasło"
+          required
+          maxlength="16"
+          autocomplete="off"
+          pattern=".{8,}"
+          title="Hasło musi składać się z conajmniej 8 znaków"
+        /><br />
+        <input type="submit" value="Zarejestruj się" />
+      </form>
+    </dialog>
+    <script>
+      function closeModal() {
+        let modal = document.querySelector(".signup-page");
+        modal.setAttribute("closing", "");
+        modal.addEventListener(
+          "animationend",
+          () => {
+            modal.removeAttribute("closing");
+            modal.close();
+          },
+          { once: true }
+        );
+      }
+    </script>
+  </body>
+</html>

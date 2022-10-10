@@ -1,0 +1,78 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: #111;
+    color: white;
+}
+.box {
+    background: #333;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem;
+    width: calc(calc(calc(150px + 1rem) * 5) - 1rem);
+}
+.box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: red;
+    z-index: 1;
+}
+.animation-container {
+    width: calc(calc(calc(150px + 1rem) * 5) - 1rem);
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.animation-container[state="rolling"] {
+    animation: roll 5000ms cubic-bezier(0.26, 0.86, 1, 1) 0ms forwards;
+}
+.animation-container[state="rolled"] {
+    transform: translate(calc(calc(150px + 1rem) * -20), 0);
+}
+.animation-container::-webkit-scrollbar {
+    display: none;
+}
+.card {
+    text-align: center;
+}
+.card p {
+    padding: 0;
+    margin: 0;
+}
+.roll-button {
+    font-size: 2rem;
+    background: hotpink;
+    border: none;
+    border-radius: 15px;
+    padding: 0.3rem 0.6rem;
+    width: 200px;
+    color: white;
+    outline: none;
+    transition: scale 300ms;
+}
+.roll-button:active {
+    scale: 0.985;
+}
+@keyframes roll {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(calc(calc(150px + 1rem) * -20), 0);
+    }
+}
