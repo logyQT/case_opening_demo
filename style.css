@@ -43,7 +43,7 @@ body {
     gap: 1rem;
 }
 .roll-container[state="rolling"] {
-    animation: roll var(--roll_time) cubic-bezier(0.26, 0.86, 1, 1) 0ms forwards;
+    animation: roll var(--roll_time) cubic-bezier(0.05, 0.93, 1, 1) 0ms forwards;
 }
 .roll-container[state="rolled"] {
     transform: translate(calc(calc(calc(150px + 1rem) * -20) + var(--roll_offset)), 0);
