@@ -57,6 +57,26 @@ body {
     padding: 0;
     margin: 0;
 }
+.item img {
+    object-fit: contain;
+    width: 150px;
+    aspect-ratio: 1;
+}
+.special-item {
+    background: rgba(251, 255, 33, 0.3);
+}
+.covert {
+    background: rgba(255, 0, 0, 0.3);
+}
+.classified {
+    background: rgba(255, 0, 234, 0.3);
+}
+.restricted {
+    background: rgba(98, 0, 255, 0.3);
+}
+.mil-spec {
+    background: rgba(17, 72, 255, 0.3);
+}
 .roll-button {
     font-size: 2rem;
     background: hotpink;
@@ -91,5 +111,18 @@ body {
     }
     100% {
         transform: translate(calc(calc(calc(150px + 1rem) * -20) + var(--roll_offset)), 0);
+    }
+}
+
+@media (orientation: portrait) {
+    .item img {
+        width: 75px;
+    }
+    .inventory {
+        width: calc(calc(calc(75px + 1rem) * 5) - 1rem);
+    }
+    .box,
+    .roll-container {
+        width: calc(calc(calc(75px + 1rem) * 5) - 1rem);
     }
 }
