@@ -3,6 +3,104 @@ const $$ = document.querySelectorAll.bind(document);
 const roll_container = $(".roll-container");
 const inventory_container = $(".inventory");
 
+const gloves = [
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/studded_brokenfang_gloves_operation10_poison_frog_black_yellow_light_large.288cab790af6a199b856678af930756e2fbb27ed.png",
+        name: "Broken Fang Gloves | Yellow-banded",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/studded_brokenfang_gloves_operation10_snakeskin_black_light_large.66371a4c81360f765a00c334492edeb05f2bbb79.png",
+        name: "Broken Fang Gloves | Unhinged",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/studded_brokenfang_gloves_operation10_metalic_green_light_large.80a800c0b681384b0227d4125cd21c4e4df0469c.png",
+        name: "Broken Fang Gloves | Jade",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/studded_brokenfang_gloves_operation10_floral_light_large.8738e4c5cf48aa1636acb8bd9888d4b12fe09df1.png",
+        name: "Broken Fang Gloves | Needle Point",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/slick_gloves_slick_jaguar_white_light_large.232a00b09f3840949dd1390ccf64115c64577bc7.png",
+        name: "Driver Gloves | Snow Leopard",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/slick_gloves_slick_stitched_black_white_light_large.40e9a843153a7b14540f53e1c34322ab9a4a08b5.png",
+        name: "Driver Gloves | Black Tie",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/slick_gloves_slick_rezan_light_large.642934831085e8715a7e8072614f71f9fc0f205e.png",
+        name: "Driver Gloves | Rezan the Red",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/slick_gloves_slick_jaguar_yellow_light_large.f706695fc1cc89762777696d24cd2e22f50582aa.png",
+        name: "Driver Gloves | Queen Jaguar",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/leather_handwraps_handwrap_leathery_caution_light_large.6a56c7aca789dc705530e1720672ee59efd11c61.png",
+        name: "Hand Wraps | CAUTION!",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/leather_handwraps_handwrap_leathery_snakeskin_orange_light_large.d22b23b2d86c4a419ce260b4186a2ef95ff0178a.png",
+        name: "Hand Wraps | Constrictor",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/leather_handwraps_handwrap_fabric_houndstooth_orange_light_large.08248935a70031a18cb246f3e3ac2bc0d8d66339.png",
+        name: "Hand Wraps | Desert Shamagh",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/leather_handwraps_handwrap_leathery_fabric_giraffe_light_large.0efe682dbf18aadb7bece5975acf5033df42765a.png",
+        name: "Hand Wraps | Giraffe",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/motorcycle_gloves_motorcycle_smoke_light_large.3381b82109056ba823c0f09cb60152438d5e2b91.png",
+        name: "Moto Gloves | Smoke Out",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/motorcycle_gloves_motorcycle_checker_flag_blue_green_light_large.d0a65fd2decfb2b5d4f8da4dfcd440771152d9fb.png",
+        name: "Moto Gloves | Finish Line",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/motorcycle_gloves_motorcycle_carbonfiber_red_light_large.39abf522353dcb56cfd4ef4b95123d510600bfe1.png",
+        name: "Moto Gloves | Blood Pressure",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/motorcycle_gloves_motorcycle_commando_ksk_light_large.0cfdc31fc06c9a989be1f7e77320eee3d608a307.png",
+        name: "Moto Gloves | 3rd Commando Company",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/specialist_gloves_specialist_marble_fade_light_large.37eb14336eedfe6e346c46134d18ea87eea1bd0f.png",
+        name: "Specialist Gloves | Marble Fade",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/specialist_gloves_specialist_fbi_light_large.1e314531001e6f78b6c3bf167a678b4aafc8d4c7.png",
+        name: "Specialist Gloves | Field Agent",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/specialist_gloves_specialist_tiger_orange_light_large.7a97c601858dc5688aba6f3e1a769f1743d14bc8.png",
+        name: "Specialist Gloves | Tiger Strike",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/specialist_gloves_specialist_ricksaw_camo_light_large.83c8da4fc79d723f693ca5c9a551847321d61fb4.png",
+        name: "Specialist Gloves | Lt. Commander",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/sporty_gloves_sporty_slingshot_light_large.31d32b99c02474d3c39dff0999d53bdc1249586d.png",
+        name: "Sport Gloves | Slingshot",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/sporty_gloves_sporty_jaguar_light_large.211eda01f38938c1a6e851aa45550c94d2fcab93.png",
+        name: "Sport Gloves | Nocts",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/sporty_gloves_sporty_hunter_light_large.60a0a2143cfdf8bcd1e6198ecf04bed3ce082024.png",
+        name: "Sport Gloves | Big Game",
+    },
+    {
+        img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/sporty_gloves_sporty_houndstooth_red_light_large.1e0753ba972edc22576bc39d52d890b6df45114a.png",
+        name: "Sport Gloves | Scarlet Shamagh",
+    },
+];
 const items = {
     special: {
         img: "https://csgostash.com/img/misc/rare_item.png",
@@ -47,7 +145,7 @@ const items = {
         },
         p90: {
             img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_p90_gs_p90_tangled_light_large.d1c6b11dc6876f1cf546281df8b8fac68a037518.png",
-            name: "P90 Vent Rush",
+            name: "P90 | Vent Rush",
         },
         m249: {
             img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_m249_cu_m249_downvote_light_large.9d51d5d89b1df07b160580b5b929f66f06bb8310.png",
@@ -101,7 +199,14 @@ function add_items(preview = false) {
 }
 
 function update_inventory(x) {
-    inventory_container.appendChild(x.div.cloneNode("deep"));
+    if (x.special) {
+        let temp = x.div.cloneNode("deep");
+        temp.querySelector("img").src = x.special.img;
+        temp.querySelector("p").innerText = x.special.name;
+        inventory_container.appendChild(temp);
+    } else {
+        inventory_container.appendChild(x.div.cloneNode("deep"));
+    }
     inventory_container.scroll(0, inventory_container.scrollHeight);
 }
 
@@ -114,11 +219,13 @@ function generate_item() {
     let item_name;
     let img_src;
     let bgc;
+    let special = undefined;
 
     if (seed <= 2) {
         item_name = items.special.name;
         img_src = items.special.img;
         bgc = "special-item";
+        special = gloves[Math.floor(Math.random() * gloves.length)];
     } else if (seed >= 3 && seed <= 9) {
         let seed2 = Math.floor(Math.random(seed) * 2);
         item_name = items.red[Object.keys(items.red)[seed2]].name;
@@ -149,7 +256,7 @@ function generate_item() {
     div.appendChild(img);
     div.appendChild(text);
 
-    return { div: div, img: img_src, name: item_name };
+    return { div: div, img: img_src, name: item_name, special: special };
 }
 
 function generate_roll_offset() {

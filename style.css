@@ -84,6 +84,7 @@ body {
 }
 .item {
     text-align: center;
+    width: 150px;
 }
 .item p {
     padding: 0;
@@ -91,6 +92,7 @@ body {
 }
 .item img {
     object-fit: contain;
+    object-position: center;
     width: 150px;
     aspect-ratio: 1;
     background: rgba(128, 128, 128, 0.3);
@@ -154,6 +156,7 @@ body {
 @media (orientation: portrait) {
     .item {
         height: calc(75px + 1rem);
+        width: 75px;
     }
     .item img {
         width: 75px;
